@@ -23,15 +23,15 @@ import {MatMenuModule} from "@angular/material/menu";
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { ChargeComponent } from '../charge/charge.component';
-import { TableLoanComponent } from '../loans/table/table.component';
 import { TableComponent } from '../books/table/table.component';
+import { TableLoanComponent } from '../loans/table-loan/table-loan.component';
 
 
 
 
 @NgModule({
   declarations: [
-    ChargeComponent,TableLoanComponent,TableComponent],
+    ChargeComponent,TableComponent,TableLoanComponent],
   imports: [
     CommonModule,
     FormsModule,
