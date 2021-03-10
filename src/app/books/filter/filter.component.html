@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="column">
+    <div class="header">
+    <h1 class="m20" class="od-lato-regular-font">Libros </h1>
+    </div>
+      <form class="header" [formGroup]="readerSearch"> 
+       
+      <!--
+        <mat-form-field class="example-full-width">
+            <mat-label>Buscar Libro</mat-label>
+            <input matInput
+                   aria-label="Book"
+                   [matAutocomplete]="auto"
+                   [formControl]="stateCtrl">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let book of filteredStates | async" [value]="book.title">
+                <img class="example-option-img" aria-hidden [src]="book.img" height="25">
+                <span>{{book.title}}</span> |
+                <small>isbn: {{book.isbn}}</small>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>-->
+          <div class="searchBook">
+          <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+            <mat-label>Buscar Libros</mat-label>
+            <input matInput formControlName="search" placeholder="Placeholder">
+            <mat-icon matSuffix>book</mat-icon>
+          </mat-form-field>
+
+
+        <button mat-stroked-button [ngClass]="{'buton1': !readerSearch.valid, 'buton':readerSearch.valid  }"  (click)="getFilterBook()" [disabled]="!readerSearch.valid" >Buscar</button>
+
+        </div>
+
+          <mat-radio-group formControlName="type" aria-label="Select an option">
+            <p>Buscar por:</p>
+            <mat-radio-button value="title">Titulo</mat-radio-button>
+            <mat-radio-button class="ml-15" value="author">Autor</mat-radio-button>
+          </mat-radio-group>
+        </form>
+
+  </div>
+
+  <app-charge *ngIf="charge"></app-charge>
+  <div class="tabla">
+  <app-table *ngIf="showTable" [data]="data"></app-table>
+</div>
+</div>

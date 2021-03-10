@@ -1,1 +1,742 @@
 /* You can add global styles to this file, and also import other style files */
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$officeDepotAdminFrontend-primary: mat-palette($mat-indigo);
+$officeDepotAdminFrontend-accent : mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$officeDepotAdminFrontend-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$officeDepotAdminFrontend-theme: mat-light-theme($officeDepotAdminFrontend-primary, $officeDepotAdminFrontend-accent, $officeDepotAdminFrontend-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($officeDepotAdminFrontend-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@import "assets/scss/fonts.scss";
+@import "assets/scss/colors.scss";
+
+
+app-home, app-category, app-user, app-notification, app-aditional-info{
+  margin: auto;
+}
+
+
+// Font Size
+.od-size-13 {
+  font-size: 13px;
+}
+
+.od-size-14 {
+  font-size: 14px;
+}
+
+.od-size-15 {
+  font-size: 15px;
+}
+
+.od-size-16 {
+  font-size: 16px;
+}
+
+.od-size-18 {
+  font-size: 18px;
+}
+
+.od-size-20 {
+  font-size: 20px;
+}
+
+// Font Color
+.od-color-red {
+  color: $red;
+}
+
+.od-color-red-2 {
+  color: $red-2;
+}
+
+.od-color-white {
+  color: $white;
+}
+
+.od-color-green {
+  color: $green;
+}
+
+.od-color-gray-2 {
+  color: $gray-2;
+}
+
+.od-color-purple {
+  color: $purple;
+}
+
+.od-color-deep-blue {
+  color: $deep-blue;
+}
+
+.od-color-gray-1 {
+  color: $gray-1;
+}
+
+.od-color-background {
+  color: $background;
+}
+
+.od-color-gray-3 {
+  color: $gray-3;
+}
+
+.od-color-aqua {
+  color: $aqua;
+}
+
+.od-color-turquesa {
+  color: $turquesa;
+}
+
+.od-color-yellow {
+  color: $yellow;
+}
+
+.od-color-warm-grey {
+  color: $warm-grey;
+}
+
+// DISPLAY
+.od-pointer {
+  cursor: pointer;
+}
+
+.od-full-width {
+  width: 100%;
+}
+
+.od-column-between {
+  display        : flex;
+  flex-direction : column;
+  justify-content: space-between;
+}
+
+.od-row-between {
+  display        : flex;
+  flex-direction : row;
+  justify-content: space-between;
+}
+
+.od-between{
+  display        : flex;
+  justify-content: space-between;
+
+}
+
+.od-flex-row {
+  display       : flex;
+  flex-direction: row;
+}
+
+.od-row-align-center {
+  display       : flex;
+  flex-direction: row;
+  align-items   : center;
+}
+
+.od-row-justify-center {
+  display        : flex;
+  flex-direction : row;
+  justify-content: center;
+}
+
+.od-row-around {
+  display        : flex;
+  flex-direction : row;
+  justify-content: space-around;
+}
+
+.od-flex-column {
+  display       : flex;
+  flex-direction: column;
+}
+
+.od-column-align-center {
+  display       : flex;
+  flex-direction: column;
+  align-items   : center;
+}
+
+.od-column-justify-center {
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+}
+
+.od-flex-wrap {
+  display  : flex;
+  flex-wrap: wrap;
+}
+
+.od-flex-end {
+  display        : flex;
+  justify-content: flex-end;
+}
+
+.od-flex-start {
+  display        : flex;
+  justify-content: flex-start;
+}
+
+.od-aling-start {
+  display    : flex;
+  align-items: flex-start;
+}
+
+.od-flex-space-around {
+  display        : flex;
+  justify-content: space-around;
+}
+
+.od-justify-center {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}
+
+.od-align-item-center {
+  display    : flex;
+  align-items: center;
+}
+
+.od-justify-flex-end {
+  justify-content: flex-end;
+}
+
+.od-text-align-center {
+  text-align: center;
+}
+.od-underline {
+  text-decoration: underline;
+}
+
+//Buttons
+button {
+  border          : none;
+  width           : 160px;
+  height          : 40px;
+  border-radius   : 3px;
+  background-color: rgb(37, 37, 37);
+
+  p {
+    font-family: Lato;
+    font-size  : 14px;
+    font-weight: 700;
+    color      : $white;
+  }
+}
+// button:hover:enabled {
+//   border          : none;
+//   width           : 160px;
+//   height          : 40px;
+//   border-radius   : 3px;
+//   box-shadow      : 0 8px 3px 0 rgba(0, 0, 0, 0.15);
+//   background-color: $red;
+
+//   p {
+//     font-family: Lato;
+//     font-size  : 14px;
+//     font-weight: 700;
+//     color      : $white-2;
+//   }
+// }
+
+button:disabled,
+button[disabled] {
+  p {
+    opacity    : 0.5;
+    color      : $white-2;
+    font-family: Lato;
+    font-weight: 700;
+  }
+}
+
+.od-button-border {
+  border: $red;
+  background-color: $white;
+  box-shadow: none;
+  p {
+    color: $warm-grey;
+    font-family: Lato;
+    font-weight: 700;
+    font-size: 14px;
+  }
+}
+
+.nav-bar {
+  display: flex;
+  align-items: baseline;
+  flex-direction: row;
+  margin-top: 7px;
+  font-family: Lato;
+  font-size: 14px;
+  .nav-item-menu {
+    text-align: center;
+    height: 40px;
+    width: 184px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav-item-menu:nth-child(4) {
+    border-bottom: none;
+  }
+  .au-item-selected {
+    font-weight: bold;
+    color: $red !important;
+    border-bottom: 2px solid $red;
+  }
+  .nav-link-menu {
+    padding: 12px 64px;
+    color: $gray-2;
+    &:focus {
+      color: $red;
+      font-weight: bold;
+    }
+  }
+}
+
+body {
+  margin: 0 auto;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #a2a2a2 !important;
+}
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #a2a2a2 !important;
+}
+
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: white;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+  border-color: red; // Or the color you want
+}
+
+
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #a2a2a2 !important;
+  ;
+}
+
+
+.library-logo{
+  width: 6rem!important;
+}
+
+.charge {
+  position: absolute;
+  left    : 50%;
+  top     : 40%;
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: $red;
+}
+
+
+
+.titlesec {
+  font-family: Lato;
+
+  font-size: 20px;
+
+  font-weight: 500;
+
+  font-stretch: normal;
+
+  font-style: normal;
+
+  line-height: normal;
+
+  letter-spacing: normal;
+  color         : $gray-3;
+  margin-left   : 2rem;
+}
+
+
+.morebold {
+  font-weight: 700 !important;
+}
+
+
+.buton {
+  display: flex;
+  width  : 192px;
+
+  height    : 40px;
+  margin-top: .5rem;
+
+  border-radius  : 3px;
+  justify-content: center;
+  align-content  : center;
+  align-items    : center;
+
+  background-color: rgb(32, 32, 32);
+  border          : none;
+  text-align      : center;
+  color           : white;
+  font-size       : .8rem;
+}
+
+
+.buton1 {
+  display: flex;
+  width  : 192px;
+
+  height    : 40px;
+  margin-top: .5rem;
+
+  border-radius  : 3px;
+  justify-content: center;
+  align-content  : center;
+  align-items    : center;
+
+  background-color: rgb(109, 109, 109);
+  border          : none;
+  text-align      : center;
+  color           : white !important;
+  font-size       : .8rem;
+}
+
+.buttoncreate {
+  width : 176px;
+  border: none;
+
+  height: 32px;
+
+  border-radius: 3px;
+
+  background-color: $red;
+
+  font-family: Lato;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  font-stretch: normal;
+
+  font-style: normal;
+
+  line-height: normal;
+
+  letter-spacing: normal;
+
+  text-align  : center;
+  color       : white;
+  margin-right: .7rem;
+}
+
+
+.content {
+  display        : flex;
+  justify-content: center;
+  align-content  : center;
+  align-items    : center;
+  width          : 100%;
+  height         : 100vh;
+}
+
+.tab-content {
+  width     : 1024px;
+  margin-top: 4rem;
+}
+
+.imageresponsive {
+  width: 100%;
+}
+
+
+
+.active {
+  color       : $red !important;
+  border-color: $red !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin     : 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.od-quill-editor {
+  .ql-container {
+      &.ql-snow {
+          height: 300px !important;
+      }
+  }
+}
+
+
+.od-menu {
+    flex-direction: column;
+    position: relative;
+    width: 224px;
+    height: 100vh;
+    box-shadow: 1px 0 5px 0 rgba(0, 0, 0, 0.05);
+    background-color: white;
+    align-content: center;
+    align-items: flex-start;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.od-logo-menu-image {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.od-menu-items {
+    margin: 0 auto;
+    margin-top: 3rem;
+    width: 100%;
+}
+
+.od-menu-item {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 48px;
+    margin-bottom: 1.5rem;
+}
+
+.od-menu-bar {
+    height: 100%;
+}
+
+.indicador::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 24%;
+    width: 4px;
+
+    height: 40px;
+
+    transform: rotate(-180deg);
+    border-top-left-radius: 30%;
+
+    border-bottom-left-radius: 30%;
+
+    background-color: $red;
+}
+
+.od-text {
+    margin-left: 1rem;
+}
+
+a {
+    text-decoration: none;
+
+    font-family: Lato;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    font-stretch: normal;
+
+    font-style: normal;
+
+    line-height: normal;
+
+    letter-spacing: normal;
+
+    color: $gray-2;
+}
+
+.od-menu-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: #cccccc;
+    height: 48px;
+    position: absolute;
+    bottom: 0;
+}
+
+.od-menu-footer-email {
+    max-width: 180px;
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.link-active {
+    color: $red;
+}
+
+.od-section-container {
+    height: 40px;
+    position: relative;
+
+    padding: 0 16px 0;
+    mat-icon {
+        margin-right: 16px;
+    }
+    p {
+        margin: 0;
+    }
+    .od-indicator {
+        width: 6px;
+        height: 40px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        background-color: black;
+
+    }
+}
+
+.link-active:first-child:before {
+    content: " ";
+}
+
+.od-menu-footer-email {
+    font-family: Lato;
+    font-size: 14px;
+
+    font-weight: normal;
+
+    font-stretch: normal;
+
+    font-style: normal;
+
+    line-height: normal;
+
+    letter-spacing: normal;
+    color: #666666;
+    margin-left: 0.5rem;
+}
+
+.od-centrado {
+    margin: 0 auto;
+}
+
+.od-color-red-active {
+    color: black !important;
+}
+
+
+.main{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+}
+
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.firstLogo{
+  width: 7rem;
+}
+
+
+.role{
+  margin-top: 7rem;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card{
+  display: flex;
+  flex-basis: 35%;
+  justify-content: center;
+  align-items: center;
+  height: 14rem;
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 2.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 2.5px 10px rgba(0, 0, 0, 0.06),
+  0 2.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 1.8px 33.4px rgba(0, 0, 0, 0.086)
+;
+
+box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.05);
+
+  flex-direction: column;
+  cursor: pointer;
+}
+
+
+
+.card img{
+  width: 6rem;
+}
+
+
+.charge{
+  width: 14rem;
+  margin-top: 4rem;
+}
+
+.charge img{
+  width: 100%;
+}
+
+
+.mt-15{
+  margin-top: 5rem!important;
+}
+
+.bold{
+  font-weight: 700;
+}

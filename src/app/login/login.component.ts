@@ -1,0 +1,88 @@
+import { Component, OnInit } from '@angular/core';
+
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styles: [
+  ]
+})
+export class LoginComponent implements OnInit {
+
+  public AccessType:string;
+
+  public readerLoginForm: FormGroup;
+  public adminLoginForm:FormGroup;
+  public readerSignUpForm: FormGroup;
+
+  public showPassword: boolean = false;
+
+
+  constructor(
+    private fb:FormBuilder,
+    private loginService:AuthService,
+    private router:Router
+  ) {
+
+   }
+
+  ngOnInit(): void {
+    this.readerLoginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    });
+
+    this.adminLoginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    });
+
+    this.readerSignUpForm = this.fb.group({
+
+    })
+  }
+
+  goToReader(){
+    this.AccessType = "Reader";
+  }
+
+  goToAdmin(){
+    this.AccessType = "Admin";
+  }
+
+
+  setShowPassword() {
+    this.showPassword = !this.showPassword;
+  }
+
+
+  async logIn(){
+
+    try {
+      if(this.AccessType == 'Reader'){
+        console.log(this.readerLoginForm.value);
+        const response:any = await this.loginService.readerLogin(this.readerLoginForm.value.email,this.readerLoginForm.value.password);
+        console.log(response);
+        localStorage.setItem("token",response.accesToken);
+        this.router.navigate(["/dashboard"]);
+
+      }else if(this.AccessType == "Admin"){
+        const response:any = await this.loginService.adminLogin(this.readerLoginForm.value.email,this.readerLoginForm.value.password);
+        console.log(response);
+        localStorage.setItem("token",response.accesToken);
+        this.router.navigate(["/dashboard"]);
+
+      }
+
+    } catch (error) {
+      console.log(error);
+      
+    }
+
+  }
+
+
+}

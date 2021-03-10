@@ -1,0 +1,47 @@
+<div class="main">
+    <div class="header">
+        <img class="firstLogo" src="../../assets/images/alejandria-removebg-preview.png" alt="">
+        <h3 class="od-lato-regular-font" >Bienvenido</h3>
+    </div>
+
+    <div *ngIf="AccessType == null" class="role">
+        <div (click)="goToReader()" class="card">
+            <h3 class="od-lato-regular-font" >Lector</h3>
+            <img src="../../assets/images/cat.jpg" alt="">
+        </div>
+        <div (click)="goToAdmin()" class="card">
+            <h3 class="od-lato-regular-font" >Admin</h3>
+            <img src="../../assets/images/admincat.jpg" alt="">
+        </div>
+    </div>
+
+    <div *ngIf="AccessType != null" class="role">
+        <form [formGroup]="readerLoginForm">
+            <div class="od-campos">
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="" value="" type="email" formControlName="email">
+                <mat-error *ngIf="readerLoginForm.get('email').errors?.required">
+                  Campo Requerido 
+                </mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="" value="" type="password" type="{{showPassword? 'text': 'password'}}"
+                  formControlName="password">
+                <mat-icon (click)="setShowPassword()" matSuffix svgIcon="{{showPassword? 'ic-unlock': 'ic-lock'}}">
+                </mat-icon>
+                <mat-error *ngIf="readerLoginForm.get('password').errors?.required">
+                    Campo Requerido 
+                </mat-error>
+              </mat-form-field>
+              <br><br>
+            </div>
+          </form>
+          <button mat-button class="buton1" [ngClass]="{'buton1': !readerLoginForm.valid, 'buton':readerLoginForm.valid  }"
+            (click)="logIn()" [disabled]="!readerLoginForm.valid">Ingresar</button>
+    </div>
+
+
+</div>

@@ -1,0 +1,58 @@
+.container{
+    width: 100%;
+    max-width:1920px;
+    justify-content:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.column{
+    width: 95%;
+}
+
+.header{
+    margin-top: 2rem;
+    margin-left: 15rem;
+    width:  85%;
+    display: flex;
+    justify-content:flex-start;
+    display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+}
+
+
+
+.searchBook{
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+
+}
+
+.searchBook mat-form-field{
+    margin: 0 auto;
+    flex-basis: 75%;
+}
+
+.searchBook button{
+    margin: 0 auto;
+    flex-basis: 20%;
+    color: white;
+
+}
+
+.example-full-width{
+    width: 50%;
+}
+
+.ml-15{
+    margin-left: 2rem;
+}
+
+.tabla{
+    width: 70%;
+}

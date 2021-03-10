@@ -1,0 +1,81 @@
+<nav class="" class="od-menu">
+    <div class="od-logo-menu-image">
+        <img class="library-logo" src="../../../assets/images/alejandria-removebg-preview.png" alt="">
+    </div>
+    <div class="od-menu-items" fxLayout="column">
+        <div class="od-centrado">
+          
+
+
+            <div class="od-flex-column" >
+                <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
+                    
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">dashboard</mat-icon>
+
+                    <p class="od-size-14 od-lato-bold-font od-color-gray-2"
+                        [class.od-color-red-active]="publicityHome || publicityCategories || publicityOnboarding">
+                        Inicio
+                    </p>
+                </div>
+                <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
+                    
+                    <mat-icon svgIcon="{{aditionalInfo? 'ic-info-on': 'ic-info-off'}}"></mat-icon>
+            
+                    <p class="od-size-14 od-lato-bold-font od-color-gray-2"
+                        [class.od-color-red-active]="publicityHome || publicityCategories || publicityOnboarding">
+                        Libros
+                    </p>
+                </div>
+                <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
+                    <div *ngIf="publicityHome" class="od-indicator"></div>
+                    <mat-icon svgIcon="{{publicityHome?  'ic-dot-on' : ''}}"></mat-icon>
+                    <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="publicityHome">
+                       Libro
+                    </p>
+                </div>
+                <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityCategory()">
+                    <div *ngIf="publicityCategories"  class="od-indicator"></div>
+                    <mat-icon svgIcon="{{publicityCategories?  'ic-dot-on' : ''}}"></mat-icon>
+                    <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="publicityCategories">
+                       Autor
+                    </p>
+                </div>
+            </div>
+            <div class="od-row-align-center od-section-container od-pointer" (click)="goToUsers()" >
+                <div *ngIf="users" class="od-indicator"></div>
+                <mat-icon svgIcon="{{users? 'ic-user-on': 'ic-user-off'}}"></mat-icon>
+                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="users">
+                    Usuarios
+                </p>
+            </div>
+
+            <div class="od-row-align-center od-section-container od-pointer" (click)="goToNotifications()" >
+                <div *ngIf="notifications" class="od-indicator"></div>
+                <mat-icon svgIcon="{{notifications? 'ic-notification-on': 'ic-notification-off'}}"></mat-icon>
+                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="notifications">
+                    Prestamos
+                </p>
+            </div>
+
+            <div class="od-row-align-center od-section-container od-pointer" (click)="goToAditionalInformation()" >
+                <div *ngIf="aditionalInfo" class="od-indicator"></div>
+                <mat-icon
+                        svgIcon="{{publicityHome || publicityCategories || publicityOnboarding? 'ic-publicidad-on': 'ic-publicidad-off'}}">
+                    </mat-icon>
+                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="aditionalInfo">
+                    Historial
+                </p>
+            </div>
+
+
+        </div>
+
+
+      
+    </div>
+    <div class="od-menu-footer" (click)="logout()" fxLayout="row" fxLayoutAlign="space-around center">
+
+        <mat-icon class="icon-footer" svgIcon="ic-logout"></mat-icon>
+       <!-- <div class="od-menu-footer-email">{{authService.currentUser.data.email}}</div> -->
+    </div>
+</nav>

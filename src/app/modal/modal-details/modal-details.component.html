@@ -1,0 +1,31 @@
+<div class="details">
+    <p class="od-lato-regular-font">Detalles Libro </p>
+
+    <div class="headerDetails">
+
+        <p class="od-lato-regular-font bold"> {{data.title}} </p>
+
+        <img class="imgmodal" src="{{data.img}}" alt="">
+
+            <p class="od-lato-regular-font bold" > Autor: {{data.author[0].firstname}}
+                {{data.author[0].lastname}} </p>
+
+      
+        <p class="od-lato-regular-font"> Sinopsís: {{data.description}} </p>
+
+
+        <p class="od-lato-regular-font"> ISBN : {{data.isbn}} </p>
+        <p class="od-lato-regular-font"> ubicación : {{data.location}} </p>
+
+        <div class="numbers">
+
+            <p class="od-lato-regular-font"> edición : {{data.edition}} </p>
+
+
+            <p class="od-lato-regular-font"> cantidad : {{data.quantity}} </p>
+
+
+        </div>
+    </div>
+
+</div>

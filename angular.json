@@ -123,6 +123,17 @@
           }
         }
       }
-    }},
-  "defaultProject": "LibraryFrontend"
+    }
+  },
+  "defaultProject": "LibraryFrontend",
+  "cli": {
+    "analytics": "8dac4c62-5691-4bad-97e0-afb4894bc757"
+  },
+  "schematics": {
+    "@schematics/angular": {
+      "component": {
+        "spec": false
+      }
+    }
+  }
 }
