@@ -31,7 +31,14 @@
                     <div *ngIf="booksUser" class="od-indicator"></div>
                     <mat-icon svgIcon="{{booksUser?  'ic-dot-on' : ''}}"></mat-icon>
                     <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="booksUser">
-                       Consulta Libros
+                        Libros
+                    </p>
+                </div>
+                <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
+                    <div *ngIf="booksUser" class="od-indicator"></div>
+                    <mat-icon svgIcon="{{booksUser?  'ic-dot-on' : ''}}"></mat-icon>
+                    <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="booksUser">
+                        Autores
                     </p>
                 </div>
             </div>
@@ -39,7 +46,21 @@
                 <div *ngIf="users" class="od-indicator"></div>
                 <mat-icon svgIcon="{{users? 'ic-user-on': 'ic-user-off'}}"></mat-icon>
                 <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="users">
-                    Mi perfil
+                    Usuarios
+                </p>
+            </div>
+            <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
+                <div *ngIf="booksUser" class="od-indicator"></div>
+                <mat-icon svgIcon="{{booksUser?  'ic-dot-on' : ''}}"></mat-icon>
+                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="booksUser">
+                    Lectores
+                </p>
+            </div>
+            <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
+                <div *ngIf="booksUser" class="od-indicator"></div>
+                <mat-icon svgIcon="{{booksUser?  'ic-dot-on' : ''}}"></mat-icon>
+                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="booksUser">
+                    Administradores
                 </p>
             </div>
 
@@ -48,6 +69,22 @@
                 <mat-icon svgIcon="{{loans? 'ic-notification-on': 'ic-notification-off'}}"></mat-icon>
                 <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="loans">
                     Prestamos
+                </p>
+            </div>
+
+
+            <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
+                <div *ngIf="booksUser" class="od-indicator"></div>
+                <mat-icon svgIcon="{{booksUser?  'ic-dot-on' : ''}}"></mat-icon>
+                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="booksUser">
+                    Aprobar Prestamos
+                </p>
+            </div>
+            <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
+                <div *ngIf="booksUser" class="od-indicator"></div>
+                <mat-icon svgIcon="{{booksUser?  'ic-dot-on' : ''}}"></mat-icon>
+                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="booksUser">
+                    Devolución Prestamo
                 </p>
             </div>
 <!--

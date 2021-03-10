@@ -5,6 +5,16 @@ import { BookService } from 'src/app/services/book.service';
 import { LoanService } from 'src/app/services/loan.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+
+export interface Loan {
+  id:string;
+  title: string;
+  createdDate: Date;
+  edition: number;
+  status: string,
+  returnDate: string,
+  aprovedDate:string
+}
 @Component({
   selector: 'app-table-loan',
   templateUrl: './table-loan.component.html',
@@ -12,9 +22,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class TableLoanComponent implements OnInit {
 
-  @Input() data:any;
+  @Input() data:any[];
   public dataSource = new MatTableDataSource(this.data);
-  displayedColumns: string[] = ['publicationYear', 'title', 'location', 'isbn','edition','quantity','actions'];
+  displayedColumns: string[] = ['title', 'createdDate', 'status','aprovedDate','returnDate'];
 
 
 
@@ -29,9 +39,21 @@ constructor(
 ngOnInit(): void {
   console.log(this.data,"desde hijo");
 
-  this.dataSource = new MatTableDataSource(this.data);
+  this.getMyLoans();
 
 
+}
+
+async getMyLoans(){
+  try {
+   const result :any= await this.loanService.getLoanByReader();
+   console.log(result);
+
+   this.dataSource = new MatTableDataSource(result);
+    
+  } catch (error) {
+    
+  }
 }
 
 applyFilter(event: Event) {

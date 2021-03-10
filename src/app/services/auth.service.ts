@@ -1,20 +1,36 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Subject, Observable } from 'rxjs';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  public token = localStorage.getItem('token');
+  private logger = new Subject<boolean>();
+  public adminToken:string;
+  public readerToken:string;
   private readerAuth = `${environment.api}/reader/sigin`;
   private adminAuth = `${environment.api}/admin/sigin`;
-  private meReader = `${environment.api}/reader/test`;
-  private meAdmin = `${environment.api}/admin/test`;
-  public isLoggedIn = false;
+  private updateReader = `${environment.api}/reader/`;
 
-  constructor(private http: HttpClient) { }
+  public isLoggedIn:boolean = false;
+  public token : string;
+  public currentUser;
+  public auth$: Subject<{isLoggedIn: boolean, token?: string, currentUser?: any }> = new Subject()
+ 
+
+  constructor(private http: HttpClient,
+    private storageService: StorageService) { 
+    this.isLoggedIn = storageService.get('isLoggedIn') == 'true' || false;
+    this.token = storageService.get('token') || '';
+    this.adminToken = storageService.get('adminToken') || '';
+    this.readerToken = storageService.get('readerToken') || '';
+    this.currentUser = storageService.get('currentUser') ? JSON.parse(storageService.get('currentUser')) : null;
+    this.auth$.next({isLoggedIn: this.isLoggedIn, token: this.token, currentUser: this.currentUser})
+    }
 
    readerLogin(email:string, password:string){
     const credentials = {
@@ -35,10 +51,69 @@ export class AuthService {
   }
 
   getInfo() {
-    return this.http.post(`${environment.api}/admin/test`,null ,{
+    return this.http.post(`${environment.api}/admin/me`,null ,{
       headers: {
         'Authorization': 'Bearer ' + this.token,
       }
     }).toPromise();
   }
+
+  getReaderInfo() {
+    return this.http.post(`${environment.api}/reader/me`,null ,{
+      headers: {
+        'Authorization': 'Bearer ' + this.token,
+      }
+    }).toPromise();
+  }
+
+  patchReader(id:string,data:any) {
+    return this.http.patch(`${environment.api}/reader/${id}`,data ,{
+      headers: {
+        'Authorization': 'Bearer ' + this.token,
+      }
+    }).toPromise();
+  }
+
+
+
+  public logOut() {
+    this.isLoggedIn = false;
+    this.auth$.next({isLoggedIn: false})
+  }
+
+  public async registerLoginAdmin(token){
+    try {
+      this.token = token;
+      this.adminToken = token;
+      this.currentUser = await this.getInfo()
+      this.isLoggedIn = true;
+      this.storageService.set("token",token)
+      this.storageService.set("adminToken",token)
+      this.storageService.set("isLoggedIn",true)
+      this.storageService.set("currentUser", JSON.stringify(this.currentUser))
+      this.auth$.next({isLoggedIn: true, token, currentUser: this.currentUser})
+    } catch(err) {
+      throw { status: 500 }
+    }
+
+  }
+
+  public async registerLoginReader(token){
+    try {
+      this.token = token;
+      this.readerToken = token;
+      this.currentUser = await this.getReaderInfo()
+      this.isLoggedIn = true;
+      this.storageService.set("token",token)
+      this.storageService.set("readerToken",token)
+      this.storageService.set("isLoggedIn",true)
+      this.storageService.set("currentUser", JSON.stringify(this.currentUser))
+      this.auth$.next({isLoggedIn: true, token, currentUser: this.currentUser})
+    } catch(err) {
+      throw { status: 500 }
+    }
+
+  }
+
+
 }

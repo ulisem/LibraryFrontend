@@ -28,6 +28,7 @@ export interface Book {
 export class TableComponent implements OnInit {
 
     @Input() data:any;
+    @Input() type:any;
     public dataSource = new MatTableDataSource(this.data);
     displayedColumns: string[] = ['publicationYear', 'title', 'location', 'isbn','edition','quantity','actions'];
  
@@ -43,6 +44,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.data,"desde hijo");
+    console.log(this.type);
 
     this.dataSource = new MatTableDataSource(this.data);
 
@@ -95,6 +97,30 @@ export class TableComponent implements OnInit {
       
     }
 
+  }
+
+
+  async deleteBook(element:Book){
+    try {
+      const deleteBook = await this.bookService.deleteBook(element.id);
+      this._snackBar.open("Libro Eliminado con exito","", {
+        duration:   5000,
+        verticalPosition: "top",
+        horizontalPosition: "right"
+      });
+      this.data = await  this.bookService.getAllBooks();
+
+    this.dataSource = new MatTableDataSource(this.data);
+
+      
+    } catch (error) {
+      this._snackBar.open("No se pudo eliminar el libro","", {
+        duration:   5000,
+        verticalPosition: "top",
+        horizontalPosition: "right"
+      });
+      
+    }
   }
 
 

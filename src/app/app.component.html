@@ -5,8 +5,9 @@
       </router-outlet>
   </div>
   <ng-template #noAuth>
-
-          <app-menu *ngIf="authService.token"> </app-menu>
+          <app-menu *ngIf="authService.readerToken"> </app-menu>
+          <app-menu-admin *ngIf="authService.adminToken"> </app-menu-admin>
           <router-outlet></router-outlet>
   </ng-template>
   
+

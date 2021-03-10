@@ -52,9 +52,17 @@
                   <mat-icon>dialpad</mat-icon>
                   <span>Ver detalles</span>
                 </button>
-                <button (click)="SoliciteLoan(element)"  mat-menu-item >
+                <button *ngIf="type == 'Admin'" (click)="SoliciteLoan(element)"  mat-menu-item >
                   <mat-icon>thumbs_up_down</mat-icon>
                   <span>Prestamo</span>
+                </button>
+                <button *ngIf="type != 'Admin'" (click)="openModal(element)" mat-menu-item>
+                  <mat-icon>edit</mat-icon>
+                  <span>Editar</span>
+                </button>
+                <button  *ngIf="type != 'Admin'" (click)="deleteBook(element)" mat-menu-item>
+                  <mat-icon>delete</mat-icon>
+                  <span>Eliminar</span>
                 </button>
               </mat-menu>
               

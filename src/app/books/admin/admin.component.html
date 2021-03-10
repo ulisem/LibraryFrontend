@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="column">
+      <div class="header">
+      <h1 class="m20" class="od-lato-regular-font">Libros </h1>
+      <button mat-stroked-button   (click)="goToCreateBook()"  >Crear Libro</button>
+
+      </div>
+        
+  
+    </div>
+  
+    <app-charge *ngIf="charge"></app-charge>
+    <div class="tabla">
+    <app-table *ngIf="showTable" [type]="type" [data]="data"></app-table>
+  </div>
+  </div>

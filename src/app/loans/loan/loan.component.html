@@ -7,6 +7,9 @@
   
     </div>
 
-
+    <app-charge *ngIf="charge"></app-charge>
+    <div class="tabla">
+    <app-table-loan *ngIf="showTable" [data]="data"></app-table-loan>
+  </div>
   
   </div>

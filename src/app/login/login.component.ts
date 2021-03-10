@@ -61,19 +61,29 @@ export class LoginComponent implements OnInit {
 
   async logIn(){
 
+    console.log(typeof( this.AccessType));
+
     try {
-      if(this.AccessType == 'Reader'){
+      if(this.AccessType.toString() === 'Reader'){
+        console.log("reader");
         console.log(this.readerLoginForm.value);
         const response:any = await this.loginService.readerLogin(this.readerLoginForm.value.email,this.readerLoginForm.value.password);
         console.log(response);
-        localStorage.setItem("token",response.accesToken);
-        this.router.navigate(["/dashboard"]);
+        this.loginService.token = response.accesToken;
+        this.loginService.readerToken = response.accesToken;
+        this.loginService.registerLoginReader(response.accesToken);
+        this.router.navigate(["/book/user"]);
 
-      }else if(this.AccessType == "Admin"){
+      } if(this.AccessType.toString() === "Admin"){
+        console.log("admin");
         const response:any = await this.loginService.adminLogin(this.readerLoginForm.value.email,this.readerLoginForm.value.password);
-        console.log(response);
+        console.log(response,"admin");
+        this.loginService.token = response.accesToken;
+        this.loginService.adminToken = response.accesToken;
         localStorage.setItem("token",response.accesToken);
-        this.router.navigate(["/dashboard"]);
+        localStorage.setItem("adminToken",response.accesToken);
+        this.loginService.registerLoginAdmin(response.accesToken);
+        this.router.navigate(["/book/admin"]);
 
       }
 

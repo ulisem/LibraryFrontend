@@ -23,6 +23,14 @@ export class BookService {
 
     }
 
+    deleteBook(id:string){
+        return this.http.delete(this.getBooks+"/"+id,{
+            headers: {
+                'Authorization': 'Bearer ' + this.token,
+            }
+        }).toPromise();
+    }
+
     getBookById(id:string){
         return this.http.get(this.getBooks+"/"+id).toPromise();
     }

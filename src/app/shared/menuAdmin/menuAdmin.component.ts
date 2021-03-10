@@ -4,12 +4,12 @@ import { Router } from '@angular/router';
 import { SubSink } from 'subsink';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
+  selector: 'app-menu-admin',
+  templateUrl: './menuAdmin.component.html',
   styles: [
   ]
 })
-export class MenuComponent implements OnInit, OnDestroy {
+export class MenuAdminComponent implements OnInit, OnDestroy {
 
   public setMenu: any;
   public limitMail: number = 14;
