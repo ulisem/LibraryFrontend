@@ -118,7 +118,7 @@ async getMyLoans(){
     try {
 
       const result = await this.loanService.returnLoan(element.id,element.readerId);
-      this._snackBar.open("Solicitud de prestamo cancelada con exito","", {
+      this._snackBar.open("Devolución de prestamo hecha con exito","", {
         duration:   5000,
         verticalPosition: "top",
         horizontalPosition: "right"
