@@ -29,6 +29,7 @@ export class AuthService {
     this.token = storageService.get('token') || '';
     this.adminToken = storageService.get('adminToken') || '';
     this.readerToken = storageService.get('readerToken') || '';
+    this.type = storageService.get('type' || '');
     this.currentUser = storageService.get('currentUser') ? JSON.parse(storageService.get('currentUser')) : null;
     this.auth$.next({isLoggedIn: this.isLoggedIn, token: this.token, currentUser: this.currentUser})
     }

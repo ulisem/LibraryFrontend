@@ -40,7 +40,7 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
   constructor(
     private route: Router,
     private location: Location,
-    private authService: AuthService,
+    public authService: AuthService,
     private storageService: StorageService
     //private storage: StorageService
   ) {
@@ -59,8 +59,8 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.typeUser = JSON.parse(this.storageService.get("currentUser"));
     console.log(this.typeUser);
+    
 
-   this.type = this.authService.type;
     
    // const currentUser = JSON.parse(this.storage.get('currentUser'));
    /* for (const grant in currentUser.data.grants) {
@@ -97,7 +97,10 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
 
   logout() {
     this.authService.logOut()
-    this.route.navigate(['/auth'])
+   localStorage.clear();
+
+   location.reload();
+    this.route.navigate(['/auth']);
   }
 
   ngOnDestroy() {

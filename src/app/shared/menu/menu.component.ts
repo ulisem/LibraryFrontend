@@ -81,7 +81,11 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   logout() {
    this.authService.logOut();
+   localStorage.clear();
+
+   location.reload();
     this.route.navigate(['/auth'])
+
   }
 
   ngOnDestroy() {
