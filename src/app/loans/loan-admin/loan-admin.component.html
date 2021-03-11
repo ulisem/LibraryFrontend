@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="column">
+      <div class="header">
+      <h1 class="m20" class="od-lato-regular-font">Solicitud de prestamos </h1>
+      </div>
+      
+  
+    </div>
+
+    <app-charge *ngIf="charge"></app-charge>
+    <div class="tabla">
+    <app-table-loan *ngIf="showTable" [data]="data"></app-table-loan>
+  </div>
+  
+  </div>

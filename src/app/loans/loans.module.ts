@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoanComponent } from './loan/loan.component';
 import { SharedModule } from '../shared/shared.module';
-import { TableLoanComponent } from './table-loan/table-loan.component';
+import { LoanAdminComponent } from './loan-admin/loan-admin.component';
 
 
 
 @NgModule({
-  declarations: [LoanComponent,TableLoanComponent],
+  declarations: [LoanComponent, LoanAdminComponent],
   imports: [
     CommonModule,
     SharedModule,

@@ -26,13 +26,14 @@ import { ChargeComponent } from '../charge/charge.component';
 import { TableComponent } from '../books/table/table.component';
 import { TableLoanComponent } from '../loans/table-loan/table-loan.component';
 import {TableAdminsComponent} from "../users/table/table.component";
+import { TableloanadminComponent } from '../loans/tableloanadmin/tableloanadmin.component';
 
 
 
 
 @NgModule({
   declarations: [
-    ChargeComponent,TableComponent,TableLoanComponent,TableAdminsComponent],
+    ChargeComponent,TableComponent,TableLoanComponent,TableAdminsComponent,TableloanadminComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -81,7 +82,8 @@ import {TableAdminsComponent} from "../users/table/table.component";
     MatBadgeModule,
     TableComponent,
     TableLoanComponent,
-    TableAdminsComponent
+    TableAdminsComponent,
+    TableloanadminComponent
   ]
 })
 export class SharedModule { }

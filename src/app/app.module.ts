@@ -19,6 +19,7 @@ import { AdminsComponentList } from './users/admins/admins.component';
 import { CreateAdminComponent } from './users/create-admin/create-admin.component';
 import { ReadersComponent } from './users/readers/readers.component';
 import { CreateUserComponent } from './users/create-user/create-user.component';
+import { LoanAdminComponent } from './loans/loan-admin/loan-admin.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import { CreateUserComponent } from './users/create-user/create-user.component';
     AdminsComponentList,
     CreateAdminComponent,
     ReadersComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    LoanAdminComponent,
+    
   ],
   imports: [
     BrowserModule,

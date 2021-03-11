@@ -19,7 +19,11 @@ export class LoanService {
 
 
     getAllLoans() {
-        return this.http.get(this.getLoanService).toPromise();
+        return this.http.get(this.getLoanService,{
+            headers:{
+                'Authorization': 'Bearer ' + this.token,
+            }
+        }).toPromise();
 
     }
 
