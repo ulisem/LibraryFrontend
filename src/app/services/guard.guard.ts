@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 })
 export class GuardGuard implements CanActivate, CanLoad {
 
-  public token = JSON.parse(localStorage.getItem('token'));
+  public token = (localStorage.getItem('token'));
 
   constructor(
     private router: Router,
@@ -24,7 +24,7 @@ export class GuardGuard implements CanActivate, CanLoad {
       if(this.token){
         observer.next(true)
       }else{
-        this.router.navigate(['login']);
+        this.router.navigate(['auth']);
         observer.next(false);
       }
     });
@@ -41,14 +41,14 @@ export class GuardGuard implements CanActivate, CanLoad {
             } catch (e) {
               this.authService.token = "";
               localStorage.clear();
-              this.router.navigate(["/auth/login"]);
+              this.router.navigate(["/auth"]);
               resolve(false);
               return;
             }
           }
         };
         if (!this.authService.token) {
-          this.router.navigate(["/auth/login"]);
+          this.router.navigate(["/auth"]);
           resolve(false);
           return;
         } else {

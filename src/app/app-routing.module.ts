@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: 'loan',
     loadChildren: () => import('src/app/loans/loan.routing.module').then(m => m.LoanRoutingModule),
-   
+    canLoad: [GuardGuard]
   }, 
   {
     path: 'user',
@@ -26,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: LoginComponent,
+    redirectTo: "/auth"
     //canLoad: [NoauthloadGuard]
   },
 ];
