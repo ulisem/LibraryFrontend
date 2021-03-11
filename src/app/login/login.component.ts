@@ -80,8 +80,17 @@ export class LoginComponent implements OnInit {
         console.log(response,"admin");
         this.loginService.token = response.accesToken;
         this.loginService.adminToken = response.accesToken;
-        this.loginService.registerLoginAdmin(response.accesToken);
+       const result = await this.loginService.registerLoginAdmin(response.accesToken);
+       setTimeout(() => {
+         if(localStorage.getItem("type") == "ADMINISTRADOR"){
+
         this.router.navigate(["/book/admin"]);
+         }else{
+
+        this.router.navigate(["loan/admin/SOLICITADO"]);
+         }
+         
+       }, 1200);
 
       }
 

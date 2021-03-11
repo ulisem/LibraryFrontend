@@ -18,7 +18,7 @@
                         Inicio
                     </p>
                 </div>
-                <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
+                <div *ngIf="authService.type == 'ADMINISTRADOR' " class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
                     
                     <mat-icon svgIcon="{{booksUser? 'ic-info-on': 'ic-info-off'}}"></mat-icon>
             
@@ -27,14 +27,14 @@
                         Libros
                     </p>
                 </div>
-                <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
+                <div *ngIf="authService.type == 'ADMINISTRADOR' " class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
                     <div *ngIf="booksUser" class="od-indicator"></div>
                     <mat-icon svgIcon="{{booksUser?  'ic-dot-on' : ''}}"></mat-icon>
                     <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="booksUser">
                         Admin. Libros
                     </p>
                 </div>
-                <div class="od-row-align-center od-section-container od-pointer" >
+                <div  *ngIf="authService.type == 'ADMINISTRADOR' " class="od-row-align-center od-section-container od-pointer" >
                     <div *ngIf="publicityCategories" class="od-indicator"></div>
                     <mat-icon svgIcon="{{publicityCategories?  'ic-dot-on' : ''}}"></mat-icon>
                     <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="publicityCategories">
@@ -42,20 +42,20 @@
                     </p>
                 </div>
             </div>
-            <div class="od-row-align-center od-section-container od-pointer" (click)="goToUsers()" >
+            <div  *ngIf="authService.type == 'ADMINISTRADOR' " class="od-row-align-center od-section-container od-pointer" (click)="goToUsers()" >
                 <mat-icon svgIcon="{{admin || reader? 'ic-user-on': 'ic-user-off'}}"></mat-icon>
                 <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="users">
                     Usuarios
                 </p>
             </div>
-            <div class="od-row-align-center od-section-container od-pointer" (click)="goToUsers()">
+            <div  *ngIf="authService.type == 'ADMINISTRADOR' " class="od-row-align-center od-section-container od-pointer" (click)="goToUsers()">
                 <div *ngIf="reader" class="od-indicator"></div>
                 <mat-icon svgIcon="{{reader?  'ic-dot-on' : ''}}"></mat-icon>
                 <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="reader">
                     Lectores
                 </p>
             </div>
-            <div class="od-row-align-center od-section-container od-pointer" (click)="goToAdmin()">
+            <div  *ngIf="authService.type == 'ADMINISTRADOR' " class="od-row-align-center od-section-container od-pointer" (click)="goToAdmin()">
                 <div *ngIf="admin" class="od-indicator"></div>
                 <mat-icon svgIcon="{{admin?  'ic-dot-on' : ''}}"></mat-icon>
                 <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="admin">
@@ -63,7 +63,7 @@
                 </p>
             </div>
 
-            <div  class="od-row-align-center od-section-container od-pointer" (click)="goToApproveLoan()" >
+            <div  *ngIf="authService.type != 'ADMINISTRADOR' "  class="od-row-align-center od-section-container od-pointer" (click)="goToApproveLoan()" >
                 <div *ngIf="solLoan || approveLoan" class="od-indicator"></div>
                 <mat-icon svgIcon="{{approveLoan || solLoan? 'ic-notification-on': 'ic-notification-off'}}"></mat-icon>
                 <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="solLoan || approveLoan">
@@ -72,14 +72,14 @@
             </div>
 
 
-            <div class="od-row-align-center od-section-container od-pointer" (click)="goToApproveLoan()">
+            <div  *ngIf="authService.type != 'ADMINISTRADOR' " class="od-row-align-center od-section-container od-pointer" (click)="goToApproveLoan()">
                 <div *ngIf="solLoan" class="od-indicator"></div>
                 <mat-icon svgIcon="{{solLoan?  'ic-dot-on' : ''}}"></mat-icon>
                 <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="solLoan">
                     Aprobar Prestamos
                 </p>
             </div>
-            <div class="od-row-align-center od-section-container od-pointer" (click)="goToReturnLoan()">
+            <div  *ngIf="authService.type != 'ADMINISTRADOR' " class="od-row-align-center od-section-container od-pointer" (click)="goToReturnLoan()">
                 <div *ngIf="approveLoan" class="od-indicator"></div>
                 <mat-icon svgIcon="{{approveLoan?  'ic-dot-on' : ''}}"></mat-icon>
                 <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="approveLoan">
