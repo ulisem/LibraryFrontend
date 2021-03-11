@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="column">
+      <div class="header">
+      <h1 class="m20" class="od-lato-regular-font">Administradores </h1>
+      <button mat-stroked-button   (click)="goToCreateBook()"  >Crear Administrador</button>
+
+      </div>
+        
+  
+    </div>
+  
+    <app-charge *ngIf="charge"></app-charge>
+    <div *ngIf="showTable" class="tabla">
+    <app-table-admins  [type]="type" [data]="data" ></app-table-admins>
+  </div>
+  </div>

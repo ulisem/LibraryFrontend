@@ -14,6 +14,11 @@ import { LoanComponent } from './loans/loan/loan.component';
 import { MeComponent } from './users/me/me.component';
 import { MenuAdminComponent } from './shared/menuAdmin/menuAdmin.component';
 import { AdminComponent } from './books/admin/admin.component';
+import { CreateComponent } from './books/create/create.component';
+import { AdminsComponentList } from './users/admins/admins.component';
+import { CreateAdminComponent } from './users/create-admin/create-admin.component';
+import { ReadersComponent } from './users/readers/readers.component';
+import { CreateUserComponent } from './users/create-user/create-user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,12 @@ import { AdminComponent } from './books/admin/admin.component';
     FilterComponent,
     LoanComponent,
     MeComponent,
-    AdminComponent
+    AdminComponent,
+    CreateComponent,
+    AdminsComponentList,
+    CreateAdminComponent,
+    ReadersComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,

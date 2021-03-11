@@ -25,13 +25,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChargeComponent } from '../charge/charge.component';
 import { TableComponent } from '../books/table/table.component';
 import { TableLoanComponent } from '../loans/table-loan/table-loan.component';
+import {TableAdminsComponent} from "../users/table/table.component";
 
 
 
 
 @NgModule({
   declarations: [
-    ChargeComponent,TableComponent,TableLoanComponent],
+    ChargeComponent,TableComponent,TableLoanComponent,TableAdminsComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -79,7 +80,8 @@ import { TableLoanComponent } from '../loans/table-loan/table-loan.component';
     MatSidenavModule,
     MatBadgeModule,
     TableComponent,
-    TableLoanComponent
+    TableLoanComponent,
+    TableAdminsComponent
   ]
 })
 export class SharedModule { }

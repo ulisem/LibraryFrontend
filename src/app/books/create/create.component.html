@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="column">
+        <div class="header">
+            <h1 class="m20" class="od-lato-regular-font">Crear Libro </h1>
+        </div>
+        <form class="form-header" [formGroup]="readerSearch">
+
+            <div class="searchBook">
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Titulo</mat-label>
+                    <input matInput formControlName="title" placeholder="titulo">
+                    <mat-icon matSuffix>title</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>ISBN</mat-label>
+                    <input matInput formControlName="isbn" placeholder="isbn">
+                    <mat-icon matSuffix>code</mat-icon>
+                </mat-form-field>
+
+
+            </div>
+
+            <div class="searchBook">
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Año de publicación</mat-label>
+                    <input matInput type="number" formControlName="PublicationYear" placeholder="año">
+                    <mat-icon matSuffix>year</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>edición</mat-label>
+                    <input matInput type="number" formControlName="edition" placeholder="edición">
+                    
+                </mat-form-field>
+
+
+            </div>
+
+
+            <div class="searchBook">
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Descripción</mat-label>
+                    <input matInput formControlName="description" placeholder="descripcion">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Cantidad</mat-label>
+                    <input matInput type="number" formControlName="quantity" placeholder="cantidad">
+                    <mat-icon matSuffix>quantity</mat-icon>
+                </mat-form-field>
+
+
+            </div>
+
+
+            <div class="searchBook">
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Ubicación</mat-label>
+                    <input matInput formControlName="location" placeholder="ubicación">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Imagen</mat-label>
+                    <input matInput formControlName="img" placeholder="url Imagen">
+                </mat-form-field>
+
+
+            </div>
+
+
+            <div class="searchBook">
+               
+                <mat-form-field  class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Autor</mat-label>
+                    <mat-select formControlName="author" multiple>
+                      <mat-option *ngFor="let author of authors" [value]="author.id">{{author.firstname}} {{author.lastname}} </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  
+
+                <button mat-stroked-button *ngIf="!idBook" [ngClass]="{'buton1': !readerSearch.valid, 'buton':readerSearch.valid  }"  (click)="createBook()" [disabled]="!readerSearch.valid" >Crear</button>
+                <button mat-stroked-button *ngIf="idBook" [ngClass]="{'buton1': !readerSearch.valid, 'buton':readerSearch.valid  }"  (click)="updateBook()" [disabled]="!readerSearch.valid" >Actualizar</button>
+
+
+
+            </div>
+
+
+            
+         
+        </form>
+
+     
+
+    </div>
+
+    <app-charge *ngIf="charge"></app-charge>
+
+</div>

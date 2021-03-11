@@ -6,6 +6,7 @@ import { async } from '@angular/core/testing';
 import { BookService } from 'src/app/services/book.service';
 import { LoanService } from 'src/app/services/loan.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 
 export interface Book {
@@ -39,6 +40,7 @@ export class TableComponent implements OnInit {
     public dialog: MatDialog,
     private bookService: BookService,
     private loanService:LoanService,
+    private router:Router,
     private _snackBar: MatSnackBar) {
    }
 
@@ -97,6 +99,10 @@ export class TableComponent implements OnInit {
       
     }
 
+  }
+
+  async goToEditBook(element){
+    this.router.navigate(["book/edit/"+element.id]);
   }
 
 

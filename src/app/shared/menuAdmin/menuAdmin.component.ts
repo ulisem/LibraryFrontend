@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { SubSink } from 'subsink';
+import { AuthService } from 'src/app/services/auth.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-menu-admin',
@@ -14,12 +16,16 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
   public setMenu: any;
   public limitMail: number = 14;
   public isLoggedIn = false;
+  public typeUser:any; 
   public email: any;
   public booksUser = false;
   public publicityCategories = false;
+  public admin = false;
+  public reader = false;
   public publicityOnboarding = false;
   public dashboardUser = false;
   public users = false;
+  public type:string;
   public loans = false;
   public aditionalInfo = false;
   public menuItemVisible = {
@@ -34,13 +40,15 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
   constructor(
     private route: Router,
     private location: Location,
-    //public authService: AuthService,
+    private authService: AuthService,
+    private storageService: StorageService
     //private storage: StorageService
   ) {
     this.subs.sink = route.events.subscribe(() => {
-      this.booksUser = location.path().includes('book/user');
-      this.dashboardUser = location.path().includes('dashboard/user')
-      this.publicityCategories = location.path().includes('dsadsadsad');
+      this.booksUser = location.path().includes('book/admin');
+      this.dashboardUser = location.path().includes('dashboard/user');
+      this.admin = location.path().includes('user/admin');
+      this.reader = location.path().includes('user/reader');
       // this.publicityOnboarding = location.path().includes('banners/onboarding');
       this.users = location.path().includes('user/user');
       this.loans = location.path().includes('loan/user');
@@ -49,6 +57,11 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
     });
   }
   ngOnInit() {
+    this.typeUser = JSON.parse(this.storageService.get("currentUser"));
+    console.log(this.typeUser);
+
+   this.type = this.authService.type;
+    
    // const currentUser = JSON.parse(this.storage.get('currentUser'));
    /* for (const grant in currentUser.data.grants) {
       this.menuItemVisible[grant] = currentUser.data.grants[grant] !== 'blocked';
@@ -56,7 +69,11 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
   }
 
   goToPublicityHome() {
-    this.route.navigate(['book/user']);
+    this.route.navigate(['book/admin']);
+  }
+
+  goToAdmin(){
+    this.route.navigate(["user/admin"]);
   }
 
   goToPublicityCategory() {
@@ -68,7 +85,7 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
   // }
 
   goToUsers(){
-    this.route.navigate(['user/user']);
+    this.route.navigate(['user/reader']);
   }
 
   goToNotifications(){
@@ -79,8 +96,7 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-   // this.authService.logOut()
-   localStorage.clear();
+    this.authService.logOut()
     this.route.navigate(['/auth'])
   }
 

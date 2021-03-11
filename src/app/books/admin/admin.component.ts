@@ -3,6 +3,7 @@ import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { BookService } from 'src/app/services/book.service';
+import { Router } from '@angular/router';
 
 export interface Book {
   publicationYear: string;
@@ -27,7 +28,7 @@ export class AdminComponent implements OnInit {
   filteredStates: Observable<Book[]>;
   public books:any;
   public data:any=[];
-  public type:string = "admin";
+  public type:string = "Admin";
   public charge:boolean=false;
   public showTable:boolean=false;
 
@@ -37,6 +38,7 @@ export class AdminComponent implements OnInit {
   constructor(
     private booksService:BookService,
     private fb:FormBuilder,
+    private router:Router
         ) {
   
   }
@@ -68,8 +70,11 @@ export class AdminComponent implements OnInit {
   }
 
   public goToCreateBook(){
+    this.router.navigate(["book/create"]);
 
   }
+
+  
 
 
 }

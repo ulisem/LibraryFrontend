@@ -1,0 +1,81 @@
+<div class="containertable">
+    <mat-form-field >
+        <mat-label>Filtrar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar" #input>
+      </mat-form-field>
+      
+      <table mat-table [dataSource]="dataSource" class="fullwidth">
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="firstname">
+          <th mat-header-cell *matHeaderCellDef> Nombre(s) </th>
+          <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="lastname">
+          <th mat-header-cell *matHeaderCellDef> Apellido(s) </th>
+          <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container *ngIf="type != 'Reader' " matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef> Rol </th>
+          <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+        </ng-container>
+
+        <ng-container *ngIf="type == 'Reader' " matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef> deuda </th>
+          <td mat-cell *matCellDef="let element"> {{element.debt}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="phoneNumber">
+          <th mat-header-cell *matHeaderCellDef> Telefono </th>
+          <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+        </ng-container>
+    
+    
+        <ng-container matColumnDef="createdDate">
+            <th mat-header-cell *matHeaderCellDef> edición </th>
+            <td mat-cell *matCellDef="let element"> {{element.createdDate | date: "yyyy-mm-dd HH:MM"}} </td>
+          </ng-container>
+    
+    
+    
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> acciones </th>
+            <td mat-cell *matCellDef="let element"> 
+                    <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+                 
+                  <mat-menu #menu="matMenu">
+                    
+                    <button *ngIf="type == 'Admin'" (click)="goToEditBook(element)" mat-menu-item>
+                      <mat-icon>edit</mat-icon>
+                      <span>Editar</span>
+                    </button>
+                    <button  *ngIf="type == 'Admin'" (click)="deleteBook(element)" mat-menu-item>
+                      <mat-icon>delete</mat-icon>
+                      <span>Eliminar</span>
+                    </button>
+
+                  
+                    <button  *ngIf="type != 'Admin'" (click)="deleteReader(element)" mat-menu-item>
+                      <mat-icon>delete</mat-icon>
+                      <span>Eliminar</span>
+                    </button>
+                  </mat-menu>
+                  
+                
+            </td>
+          </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+    </div>

@@ -5,10 +5,11 @@ import {FilterComponent} from './filter/filter.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { AdminComponent } from './admin/admin.component';
+import { CreateComponent } from './create/create.component';
 
 
 @NgModule({
-  declarations: [FilterComponent, AdminComponent],
+  declarations: [FilterComponent, AdminComponent, CreateComponent],
   imports: [
     CommonModule,
     SharedModule,

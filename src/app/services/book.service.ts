@@ -23,6 +23,22 @@ export class BookService {
 
     }
 
+    createBook(data:any){
+      return this.http.post(this.getBooks,data,{
+        headers: {
+            'Authorization': 'Bearer ' + this.token,
+        }
+      }).toPromise();
+    }
+
+    updateBook(id:string,data:any){
+        return this.http.patch(this.getBooks+"/"+id,data,{
+          headers: {
+              'Authorization': 'Bearer ' + this.token,
+          }
+        }).toPromise();
+      }
+
     deleteBook(id:string){
         return this.http.delete(this.getBooks+"/"+id,{
             headers: {

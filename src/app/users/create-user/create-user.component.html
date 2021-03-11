@@ -1,0 +1,119 @@
+<div class="container">
+    <div class="column">
+        <div class="header">
+            <h1 *ngIf="!idReader" class="m20" class="od-lato-regular-font">Crear Lector </h1>
+            <h1 *ngIf="idReader" class="m20" class="od-lato-regular-font">Editar Lector </h1>
+        </div>
+        <form class="form-header" [formGroup]="readerSearch">
+
+            <div class="searchBook">
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" placeholder="Placeholder">
+                    <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"
+                        placeholder="Placeholder">
+                    <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </mat-form-field>
+
+
+            </div>
+
+            <div class="searchBook">
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Nombre(s)</mat-label>
+                    <input matInput formControlName="firstname" placeholder="Placeholder">
+                    <mat-icon matSuffix>Name</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Apellido(s)</mat-label>
+                    <input matInput formControlName="lastname" placeholder="Placeholder">
+                    <mat-icon matSuffix>lastname</mat-icon>
+                </mat-form-field>
+
+
+            </div>
+
+
+            <div class="searchBook">
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Telefono</mat-label>
+                    <input matInput formControlName="phoneNumber" placeholder="Placeholder">
+                    <mat-icon matSuffix>phone</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Estado</mat-label>
+                    <input matInput formControlName="state" placeholder="Placeholder">
+                    <mat-icon matSuffix>state</mat-icon>
+                </mat-form-field>
+
+
+            </div>
+
+
+            <div class="searchBook">
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Alcaldia</mat-label>
+                    <input matInput formControlName="city" placeholder="Placeholder">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Colonia</mat-label>
+                    <input matInput formControlName="neigborhood" placeholder="Placeholder">
+                </mat-form-field>
+
+
+            </div>
+
+
+            <div class="searchBook">
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Calle</mat-label>
+                    <input matInput formControlName="street" placeholder="Placeholder">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Número exterior</mat-label>
+                    <input matInput formControlName="extnumber" placeholder="Placeholder">
+                </mat-form-field>
+
+
+            </div>
+
+
+            <div class="searchBook">
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>Número interior</mat-label>
+                    <input matInput formControlName="intnumber" placeholder="Placeholder">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width od-lato-regular-font" appearance="outline">
+                    <mat-label>imagen</mat-label>
+                    <input matInput formControlName="img" placeholder="imagen">
+                </mat-form-field>
+
+               
+                
+            </div>
+
+            <div class="searchBook">
+            <button *ngIf="!idReader" mat-stroked-button [ngClass]="{'buton1': !readerSearch.valid, 'buton':readerSearch.valid  }"  (click)="createReader()" [disabled]="!readerSearch.valid" >Crear</button>
+            <button *ngIf="idReader" mat-stroked-button [ngClass]="{'buton1': !readerSearch.valid, 'buton':readerSearch.valid  }"  (click)="updateReader()" [disabled]="!readerSearch.valid" >Actualizar</button>
+            </div>
+         
+        </form>
+
+     
+
+    </div>
+
+    <app-charge *ngIf="charge"></app-charge>
+
+</div>

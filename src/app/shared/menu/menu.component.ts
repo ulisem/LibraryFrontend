@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { SubSink } from 'subsink';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -34,7 +35,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   constructor(
     private route: Router,
     private location: Location,
-    //public authService: AuthService,
+    private authService: AuthService,
     //private storage: StorageService
   ) {
     this.subs.sink = route.events.subscribe(() => {
@@ -79,8 +80,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-   // this.authService.logOut()
-   localStorage.clear();
+   this.authService.logOut();
     this.route.navigate(['/auth'])
   }
 

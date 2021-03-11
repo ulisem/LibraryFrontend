@@ -19,6 +19,7 @@ export class AuthService {
   public isLoggedIn:boolean = false;
   public token : string;
   public currentUser;
+  public type: string;
   public auth$: Subject<{isLoggedIn: boolean, token?: string, currentUser?: any }> = new Subject()
  
 
@@ -58,6 +59,63 @@ export class AuthService {
     }).toPromise();
   }
 
+  getAllAdmins(){
+    return this.http.get(`${environment.api}/admin` ,{
+      headers: {
+        'Authorization': 'Bearer ' + this.token,
+      }
+    }).toPromise();
+  }
+
+  getAllReader(){
+    return this.http.get(`${environment.api}/reader` ,{
+      headers: {
+        'Authorization': 'Bearer ' + this.token,
+      }
+    }).toPromise();
+  }
+
+  createAdmin(data:any){
+    return this.http.post(`${environment.api}/admin/signup`,data ,{
+      headers: {
+        'Authorization': 'Bearer ' + this.token,
+      }
+    }).toPromise();
+  }
+
+
+  createReader(data:any){
+    return this.http.post(`${environment.api}/reader/signup`,data ,{
+      headers: {
+        'Authorization': 'Bearer ' + this.token,
+      }
+    }).toPromise();
+  }
+
+  updateAdmin(id:string,data:any){
+    return this.http.patch(`${environment.api}/admin/${id}`,data ,{
+      headers: {
+        'Authorization': 'Bearer ' + this.token,
+      }
+    }).toPromise();
+  }
+
+  deleteAdmin(id:string){
+    return this.http.delete(`${environment.api}/admin/${id}`,{
+      headers: {
+      'Authorization': 'Bearer ' + this.token,
+    }
+    }).toPromise()
+  }
+
+  deleteReader(id:string){
+    return this.http.delete(`${environment.api}/reader/${id}`,{
+      headers: {
+      'Authorization': 'Bearer ' + this.token,
+    }
+    }).toPromise()
+  }
+
   getReaderInfo() {
     return this.http.post(`${environment.api}/reader/me`,null ,{
       headers: {
@@ -74,6 +132,23 @@ export class AuthService {
     }).toPromise();
   }
 
+  getAdminById(id:string){
+    return this.http.get(`${environment.api}/admin/${id}` ,{
+      headers: {
+        'Authorization': 'Bearer ' + this.token,
+      }
+    }).toPromise();
+  }
+
+
+  getReaderById(id:string){
+    return this.http.get(`${environment.api}/reader/${id}` ,{
+      headers: {
+        'Authorization': 'Bearer ' + this.token,
+      }
+    }).toPromise();
+  }
+
 
 
   public logOut() {
@@ -82,15 +157,19 @@ export class AuthService {
   }
 
   public async registerLoginAdmin(token){
+    console.log("admin here");
     try {
       this.token = token;
       this.adminToken = token;
       this.currentUser = await this.getInfo()
       this.isLoggedIn = true;
+      this.type = this.currentUser.role;
+      this.storageService.set("type",this.type);
       this.storageService.set("token",token)
       this.storageService.set("adminToken",token)
       this.storageService.set("isLoggedIn",true)
       this.storageService.set("currentUser", JSON.stringify(this.currentUser))
+      console.log(this.currentUser,"heeey");
       this.auth$.next({isLoggedIn: true, token, currentUser: this.currentUser})
     } catch(err) {
       throw { status: 500 }
@@ -99,6 +178,7 @@ export class AuthService {
   }
 
   public async registerLoginReader(token){
+    console.log("reader here");
     try {
       this.token = token;
       this.readerToken = token;

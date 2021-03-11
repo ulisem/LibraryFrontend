@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { FilterComponent } from './filter/filter.component';
 import { AdminComponent } from './admin/admin.component';
+import { CreateComponent } from './create/create.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,14 @@ const routes: Routes = [
   {
     path:"admin",
     component: AdminComponent
+  },
+  {
+    path:"create",
+    component: CreateComponent
+  },
+  {
+    path:"edit/:id",
+    component: CreateComponent
   }
 ];
 

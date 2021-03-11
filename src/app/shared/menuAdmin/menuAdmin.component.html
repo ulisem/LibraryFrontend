@@ -18,7 +18,7 @@
                         Inicio
                     </p>
                 </div>
-                <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
+                <div *ngIf="type == 'ADMINISTRADOR'" class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
                     
                     <mat-icon svgIcon="{{booksUser? 'ic-info-on': 'ic-info-off'}}"></mat-icon>
             
@@ -27,44 +27,43 @@
                         Libros
                     </p>
                 </div>
-                <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
+                <div *ngIf="type == 'ADMINISTRADOR'" class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
                     <div *ngIf="booksUser" class="od-indicator"></div>
                     <mat-icon svgIcon="{{booksUser?  'ic-dot-on' : ''}}"></mat-icon>
                     <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="booksUser">
-                        Libros
+                        Admin. Libros
                     </p>
                 </div>
-                <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
-                    <div *ngIf="booksUser" class="od-indicator"></div>
-                    <mat-icon svgIcon="{{booksUser?  'ic-dot-on' : ''}}"></mat-icon>
-                    <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="booksUser">
+                <div *ngIf="type == 'ADMINISTRADOR'" class="od-row-align-center od-section-container od-pointer" >
+                    <div *ngIf="publicityCategories" class="od-indicator"></div>
+                    <mat-icon svgIcon="{{publicityCategories?  'ic-dot-on' : ''}}"></mat-icon>
+                    <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="publicityCategories">
                         Autores
                     </p>
                 </div>
             </div>
-            <div class="od-row-align-center od-section-container od-pointer" (click)="goToUsers()" >
-                <div *ngIf="users" class="od-indicator"></div>
-                <mat-icon svgIcon="{{users? 'ic-user-on': 'ic-user-off'}}"></mat-icon>
+            <div *ngIf="type == 'ADMINISTRADOR'" class="od-row-align-center od-section-container od-pointer" (click)="goToUsers()" >
+                <mat-icon svgIcon="{{admin || reader? 'ic-user-on': 'ic-user-off'}}"></mat-icon>
                 <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="users">
                     Usuarios
                 </p>
             </div>
-            <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
-                <div *ngIf="booksUser" class="od-indicator"></div>
-                <mat-icon svgIcon="{{booksUser?  'ic-dot-on' : ''}}"></mat-icon>
-                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="booksUser">
+            <div *ngIf="type == 'ADMINISTRADOR'" class="od-row-align-center od-section-container od-pointer" (click)="goToUsers()">
+                <div *ngIf="reader" class="od-indicator"></div>
+                <mat-icon svgIcon="{{reader?  'ic-dot-on' : ''}}"></mat-icon>
+                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="reader">
                     Lectores
                 </p>
             </div>
-            <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
-                <div *ngIf="booksUser" class="od-indicator"></div>
-                <mat-icon svgIcon="{{booksUser?  'ic-dot-on' : ''}}"></mat-icon>
-                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="booksUser">
+            <div *ngIf="type == 'ADMINISTRADOR'" class="od-row-align-center od-section-container od-pointer" (click)="goToAdmin()">
+                <div *ngIf="admin" class="od-indicator"></div>
+                <mat-icon svgIcon="{{admin?  'ic-dot-on' : ''}}"></mat-icon>
+                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="admin">
                     Administradores
                 </p>
             </div>
 
-            <div class="od-row-align-center od-section-container od-pointer" (click)="goToNotifications()" >
+            <div *ngIf="type == 'BIBLIOTECARY'" class="od-row-align-center od-section-container od-pointer" (click)="goToNotifications()" >
                 <div *ngIf="loans" class="od-indicator"></div>
                 <mat-icon svgIcon="{{loans? 'ic-notification-on': 'ic-notification-off'}}"></mat-icon>
                 <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="loans">
@@ -73,14 +72,14 @@
             </div>
 
 
-            <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
+            <div *ngIf="type == 'BIBLIOTECARY'" class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
                 <div *ngIf="booksUser" class="od-indicator"></div>
                 <mat-icon svgIcon="{{booksUser?  'ic-dot-on' : ''}}"></mat-icon>
                 <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="booksUser">
                     Aprobar Prestamos
                 </p>
             </div>
-            <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
+            <div *ngIf="type == 'BIBLIOTECARY'" class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
                 <div *ngIf="booksUser" class="od-indicator"></div>
                 <mat-icon svgIcon="{{booksUser?  'ic-dot-on' : ''}}"></mat-icon>
                 <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="booksUser">

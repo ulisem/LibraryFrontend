@@ -80,8 +80,6 @@ export class LoginComponent implements OnInit {
         console.log(response,"admin");
         this.loginService.token = response.accesToken;
         this.loginService.adminToken = response.accesToken;
-        localStorage.setItem("token",response.accesToken);
-        localStorage.setItem("adminToken",response.accesToken);
         this.loginService.registerLoginAdmin(response.accesToken);
         this.router.navigate(["/book/admin"]);
 
