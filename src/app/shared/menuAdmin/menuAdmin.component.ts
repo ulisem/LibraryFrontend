@@ -28,6 +28,8 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
   public type:string;
   public loans = false;
   public aditionalInfo = false;
+  public solLoan = false;
+  public approveLoan = false;
   public menuItemVisible = {
     banners: false,
     users: false,
@@ -53,6 +55,8 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
       this.users = location.path().includes('user/user');
       this.loans = location.path().includes('loan/user');
       this.aditionalInfo = location.path().includes('additional-information');
+      this.solLoan = location.path().includes('loan/admin/SOLICITADO');
+      this.approveLoan = location.path().includes('loan/admin/APROBADO');
       //this.email = this.authService.currentUser.data.email;
     });
   }
@@ -95,6 +99,17 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
     this.route.navigate(['additional-information']);
   }
 
+  goToApproveLoan(){
+
+    this.route.navigate(['loan/admin/SOLICITADO']);
+  }
+
+
+
+  goToReturnLoan(){
+
+    this.route.navigate(['loan/admin/APROBADO']);
+  }
   logout() {
     this.authService.logOut()
    localStorage.clear();

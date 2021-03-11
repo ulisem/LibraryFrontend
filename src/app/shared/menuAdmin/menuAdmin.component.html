@@ -63,26 +63,26 @@
                 </p>
             </div>
 
-            <div  class="od-row-align-center od-section-container od-pointer" (click)="goToNotifications()" >
-                <div *ngIf="loans" class="od-indicator"></div>
-                <mat-icon svgIcon="{{loans? 'ic-notification-on': 'ic-notification-off'}}"></mat-icon>
-                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="loans">
+            <div  class="od-row-align-center od-section-container od-pointer" (click)="goToApproveLoan()" >
+                <div *ngIf="solLoan || approveLoan" class="od-indicator"></div>
+                <mat-icon svgIcon="{{approveLoan || solLoan? 'ic-notification-on': 'ic-notification-off'}}"></mat-icon>
+                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="solLoan || approveLoan">
                     Prestamos
                 </p>
             </div>
 
 
-            <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
-                <div *ngIf="booksUser" class="od-indicator"></div>
-                <mat-icon svgIcon="{{booksUser?  'ic-dot-on' : ''}}"></mat-icon>
-                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="booksUser">
+            <div class="od-row-align-center od-section-container od-pointer" (click)="goToApproveLoan()">
+                <div *ngIf="solLoan" class="od-indicator"></div>
+                <mat-icon svgIcon="{{solLoan?  'ic-dot-on' : ''}}"></mat-icon>
+                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="solLoan">
                     Aprobar Prestamos
                 </p>
             </div>
-            <div class="od-row-align-center od-section-container od-pointer" (click)="goToPublicityHome()">
-                <div *ngIf="booksUser" class="od-indicator"></div>
-                <mat-icon svgIcon="{{booksUser?  'ic-dot-on' : ''}}"></mat-icon>
-                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="booksUser">
+            <div class="od-row-align-center od-section-container od-pointer" (click)="goToReturnLoan()">
+                <div *ngIf="approveLoan" class="od-indicator"></div>
+                <mat-icon svgIcon="{{approveLoan?  'ic-dot-on' : ''}}"></mat-icon>
+                <p class="od-size-14 od-lato-bold-font od-color-gray-2" [class.od-color-red-active]="approveLoan">
                     Devolución Prestamo
                 </p>
             </div>

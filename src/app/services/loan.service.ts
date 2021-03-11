@@ -18,8 +18,8 @@ export class LoanService {
     constructor(private http: HttpClient) { }
 
 
-    getAllLoans() {
-        return this.http.get(this.getLoanService,{
+    getAllLoans(status:string) {
+        return this.http.get(this.getLoanService+"?status="+status,{
             headers:{
                 'Authorization': 'Bearer ' + this.token,
             }
@@ -56,6 +56,34 @@ export class LoanService {
 
     createLoans(body:any){
         return this.http.post(this.getLoanService, body,{
+            headers: {
+                'Authorization': 'Bearer ' + this.token,
+            }
+        }).toPromise();
+    }
+
+    approveLoan(id:string){
+        return this.http.patch(this.getLoanService+"/approve/"+id,null,{
+            headers: {
+                'Authorization': 'Bearer ' + this.token,
+            }
+        }).toPromise();
+    }
+
+    returnLoan(id:string,idread:string){
+       const  idReader = {
+            idReader: idread
+        }
+        return this.http.patch(this.getLoanService+"/return/"+id,idReader,{
+            headers: {
+                'Authorization': 'Bearer ' + this.token,
+            }
+        }).toPromise();
+    }
+
+
+    revokeLoan(id:string){
+        return this.http.patch(this.getLoanService+"/cancel/"+id,null,{
             headers: {
                 'Authorization': 'Bearer ' + this.token,
             }

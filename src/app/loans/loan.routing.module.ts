@@ -10,7 +10,7 @@ const routes: Routes = [
     component: LoanComponent
   },
   {
-    path: "admin",
+    path: "admin/:status",
     component: LoanAdminComponent
   }
 ];
